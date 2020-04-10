@@ -69,7 +69,7 @@ class _MyAppState extends State<MyApp> {
                     GestureDetector(
                       onTap: OnToggleShowPass,
                       child: Text(
-                        "SHOW",
+                        _showPass? "SHOW" : "HIDE",
                         style: TextStyle(
                             color: Colors.blue,
                             fontSize: 15,
