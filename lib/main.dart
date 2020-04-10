@@ -9,6 +9,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool _showPass = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,19 +59,22 @@ class _MyAppState extends State<MyApp> {
                   alignment: AlignmentDirectional.centerEnd,
                   children: <Widget>[
                     TextField(
-                      obscureText: true,
+                      obscureText: !_showPass,
                       style: TextStyle(fontSize: 18, color: Colors.black),
                       decoration: InputDecoration(
                           labelText: "Password",
                           labelStyle:
                               TextStyle(color: Colors.black26, fontSize: 15)),
                     ),
-                    Text(
-                      "SHOW",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: OnToggleShowPass,
+                      child: Text(
+                        "SHOW",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
                     )
                   ],
                 ),
@@ -117,6 +121,12 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+
+  void OnToggleShowPass() {
+    setState(() {
+      _showPass = !_showPass;
+    });
   }
 
   void onSignInClick() {}
